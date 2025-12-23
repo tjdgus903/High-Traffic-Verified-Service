@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/glowpass
+    username: glowpass
+    password: pass
+  jpa:
+    # Flyway로 스키마를 관리하므로, 엔티티-스키마 불일치 시 바로 실패시키는 게 안전
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

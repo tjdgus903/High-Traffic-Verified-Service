@@ -1,21 +1,45 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version "2.0.21"
+    kotlin("plugin.spring") version "2.0.21"
+    kotlin("plugin.jpa") version "2.0.21"
+    id("org.springframework.boot") version "3.3.6"
+    id("io.spring.dependency-management") version "1.1.6"
 }
 
-group = "org.example"
-version = "1.0-SNAPSHOT"
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    // Web API
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    // Validation (@Valid, @NotBlank 등)
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    // JPA/Hibernate
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // DB Migration
+    implementation("org.flywaydb:flyway-core")
+    // PostgreSQL Driver
+    runtimeOnly("org.postgresql:postgresql")
+    // Actuator (health/metrics)
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // Kotlin
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.test {
+tasks.withType<Test> {
     useJUnitPlatform()
-}
-kotlin {
-    jvmToolchain(17)
 }
