@@ -28,7 +28,8 @@
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V2__add_outbox.sql" connection-id="9f818aec-94be-48f1-9bda-b4f771ff75af" session-id="MAIN" current-schema="public" />
-    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql" connection-id="9f818aec-94be-48f1-9bda-b4f771ff75af" session-id="MAIN" current-schema="glowpass" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql" connection-id="9f818aec-94be-48f1-9bda-b4f771ff75af" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/db/migration/V3__preferred_categories_jsonb.sql" connection-id="9f818aec-94be-48f1-9bda-b4f771ff75af" session-id="MAIN" current-schema="public" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />

@@ -1,11 +1,11 @@
-package org.example.com.example.glowpass.event.application
+package com.example.glowpass.event.application
 
+import com.example.glowpass.event.api.OrderCompletedEventRequest
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.example.com.example.glowpass.event.api.OrderCompletedEventRequest
-import org.example.com.example.glowpass.outbox.domain.OutboxEvent
-import org.example.com.example.glowpass.outbox.domain.ProcessedEvent
-import org.example.com.example.glowpass.outbox.infra.OutboxEventRepository
-import org.example.com.example.glowpass.outbox.infra.ProcessedEventRepository
+import com.example.glowpass.outbox.domain.OutboxEvent
+import com.example.glowpass.outbox.domain.ProcessedEvent
+import com.example.glowpass.outbox.infra.OutboxEventRepository
+import com.example.glowpass.outbox.infra.ProcessedEventRepository
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -25,7 +25,7 @@ class OrderCompletedIngestService(
             return
         }
 
-        val payloadJson = objectMapper.writeValueAsString(req)
+        val payloadJson: String = objectMapper.writeValueAsString(req)
 
         outboxRepository.save(
             OutboxEvent(

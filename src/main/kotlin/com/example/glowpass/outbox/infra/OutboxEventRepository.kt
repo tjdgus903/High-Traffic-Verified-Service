@@ -1,7 +1,7 @@
-package org.example.com.example.glowpass.outbox.infra
+package com.example.glowpass.outbox.infra
 
-import org.example.com.example.glowpass.outbox.domain.OutboxEvent
-import org.example.com.example.glowpass.outbox.domain.OutboxStatus
+import com.example.glowpass.outbox.domain.OutboxEvent
+import com.example.glowpass.outbox.domain.OutboxStatus
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param

@@ -1,4 +1,4 @@
-package org.example.com.example.glowpass.outbox.domain
+package com.example.glowpass.outbox.domain
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

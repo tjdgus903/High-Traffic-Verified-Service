@@ -1,7 +1,6 @@
-package org.example.com.example.glowpass.outbox.domain
+package com.example.glowpass.outbox.domain
 
 import jakarta.persistence.*
-import jakarta.validation.Payload
 import java.time.Instant
 
 
@@ -24,7 +23,7 @@ class OutboxEvent (
     @Column(name = "event_type", nullable = false, length = 50)
     val eventType : String,
 
-    @Column(name = "payload", nullable = false, columnDefinition = "jsonb")
+    @Column(name = "payload", columnDefinition = "text", nullable = false)
     val payload: String,
 
     @Enumerated(EnumType.STRING)
@@ -76,3 +75,4 @@ class OutboxEvent (
  * FAILED : 실패
  */
 enum class OutboxStatus {PENDING, PROCESSING, DONE, FAILED}
+

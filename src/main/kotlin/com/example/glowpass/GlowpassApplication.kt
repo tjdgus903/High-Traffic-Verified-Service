@@ -1,4 +1,4 @@
-package org.example.com.example.glowpass
+package com.example.glowpass
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

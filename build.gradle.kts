@@ -40,6 +40,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     implementation("org.flywaydb:flyway-core:10.22.0")
+
     runtimeOnly("org.flywaydb:flyway-database-postgresql:10.22.0")
 }
 
