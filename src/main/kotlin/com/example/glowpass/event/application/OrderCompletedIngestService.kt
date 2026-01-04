@@ -2,7 +2,7 @@ package com.example.glowpass.event.application
 
 import com.example.glowpass.event.api.OrderCompletedEventRequest
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.example.glowpass.outbox.domain.OutboxEvent
+import com.example.glowpass.outbox.domain.OutboxStatus
 import com.example.glowpass.outbox.domain.ProcessedEvent
 import com.example.glowpass.outbox.infra.OutboxEventRepository
 import com.example.glowpass.outbox.infra.ProcessedEventRepository
@@ -27,12 +27,16 @@ class OrderCompletedIngestService(
 
         val payloadJson: String = objectMapper.writeValueAsString(req)
 
-        outboxRepository.save(
-            OutboxEvent(
-                eventId = req.eventId,
-                eventType = "ORDER_COMPLETED",
-                payload = payloadJson,
-            )
+        val inserted = outboxRepository.insertIfAbsent(
+            eventId = req.eventId,
+            eventType = "ORDER_COMPLETED",
+            payload = objectMapper.writeValueAsString(req),
+            status = OutboxStatus.PENDING.name
         )
+
+        if(inserted == 0){
+            // 중복 이벤트 -> 정상종료(202)
+            return
+        }
     }
 }
