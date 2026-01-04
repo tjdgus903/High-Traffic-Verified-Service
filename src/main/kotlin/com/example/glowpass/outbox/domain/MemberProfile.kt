@@ -17,7 +17,7 @@ class MemberProfile(
     @Column(name = "age_range")
     var ageRange: String? = null,
 
-    @Column(name = "preferred_categories")
+    @Column(name = "preferred_categories", columnDefinition = "jsonb")
     var preferredCategories: String? = null,
 
     @Column(name = "updated_at", nullable = false)
